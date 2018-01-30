@@ -43,11 +43,11 @@ export default class BaseContract
     contract: object;
     contractOwner: string;
 
-    constructor(readonly transactionsProvider: Provider, readonly eventsProvider: Provider,
-                readonly keyStore: KeyStore,
-                readonly jsonInterface: object[], readonly contractBinary?: string,
+    constructor(protected transactionsProvider: Provider, protected eventsProvider: Provider,
+                protected keyStore: KeyStore,
+                protected jsonInterface: object[], protected contractBinary?: string,
                 contractAddress?: string,
-                readonly defaultSendOptions: SendOptions = {
+                protected defaultSendOptions: SendOptions = {
                     gasPrice: 1000000000,
                     gasLimit: 1200000})
     {

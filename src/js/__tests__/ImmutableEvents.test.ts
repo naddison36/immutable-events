@@ -1,54 +1,24 @@
-import {providers as Providers, Wallet} from 'ethers';
+import {providers as Providers} from 'ethers';
 import * as BN from "bn.js";
 
 import ImmutableEvents from "../ImmutableEvents";
 import KeyStore from '../keyStore/keyStore-hardcoded';
-import {default as BaseContract, SendOptions} from "../BaseContract";
 
 const contractOwner = '0x1563915e194d8cfba1943570603f7606a3115508';
 
 describe("Immutable Events", ()=>
 {
     const jsonRpcProviderURL = process.env.RPCPROVIDER || "http://localhost:8646";
-
-    const transactionsProvider = new Providers.JsonRpcProvider(jsonRpcProviderURL, "unspecified");
-    const eventsProvider = new Providers.JsonRpcProvider(jsonRpcProviderURL, "unspecified");
-
-    let gasPrice: number = 0;
-    if (process.env.gasPrice) {
-        gasPrice = parseInt(process.env.gasPrice);
-    }
-
-    let gasLimit: number;
-    if (process.env.gasLimit) {
-        gasLimit = parseInt(process.env.gasLimit);
-    }
-
-    const defaultSendOptions: SendOptions = {
-        gasPrice: gasPrice,
-        gasLimit: gasLimit
-    };
-
-    const contractBinariesDir = process.cwd() + "/bin/contracts/";
-    const keyStore = new KeyStore();
-
-    const jsonInterface = BaseContract.loadJsonInterfaceFromFile(contractBinariesDir + "ImmutableEvents");
-    const contractBinary = BaseContract.loadBinaryFromFile(contractBinariesDir + "ImmutableEvents");
-
-    const immutableEvents = new ImmutableEvents(transactionsProvider, eventsProvider, keyStore,
-        jsonInterface, contractBinary
-    );
-
-    let immutableEventsAddress: string;
+    const provider = new Providers.JsonRpcProvider(jsonRpcProviderURL, "unspecified");
+    const immutableEvents = new ImmutableEvents(provider, new KeyStore());
 
     test('Deploy', async () =>
     {
         expect.assertions(2);
 
-        let txReceipt = await immutableEvents.deployContract(contractOwner, defaultSendOptions);
+        let txReceipt = await immutableEvents.deployContract(contractOwner);
         expect(txReceipt.status).toEqual(1);
         expect(txReceipt.contractAddress).toHaveLength(42);
-        immutableEventsAddress = txReceipt.contractAddress;
 
     }, 20000);
 
@@ -56,7 +26,7 @@ describe("Immutable Events", ()=>
     {
         beforeAll(async ()=>
         {
-            await immutableEvents.deployContract(contractOwner, defaultSendOptions);
+            await immutableEvents.deployContract(contractOwner);
         });
 
         test("id has been initialised", async() =>

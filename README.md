@@ -47,6 +47,27 @@ A JavaScript client is available in the [src/js](./src/js) folder. It is written
 
 The TypeScript class that interacts with the ImmutableEvent smart contract is [src/js/ImmutableEvents.ts](./src/js/ImmutableEvents.ts). Most of the Ethers.js code is abstracted away in [BaseContract.ts](./src/js/BaseContract.ts) which can be used to abstract any solidity contract.
 
+### Usage
+
+```JS
+import {providers as Providers} from 'ethers';
+import ImmutableEvents from "../ImmutableEvents";
+import KeyStore from '../keyStore/keyStore-hardcoded';
+
+// uses a JSON RPC provider for the Ethereum connection. Other options are Infura and Etherscan
+const provider = new Providers.JsonRpcProvider("http://localhost:8646", "unspecified");
+
+const immutableEvents = new ImmutableEvents(provider, new KeyStore() );
+
+// Deploy a new ImmutableEvents contract to the Ethereum blockchain
+// The address is the account that will sign the Ethereum transaction.
+// The private key for the address needs to have been setup in the KeyStore.
+const txReceipt = await immutableEvents.deployContract('0x1563915e194d8cfba1943570603f7606a3115508');
+
+// Make some data immutable
+const txReceipt = await immutableEvents.emitEvent([{key: "testKey", value: "testValue"}]);
+```
+
 #### Tests
 The JavaScript client comes with Jest tests in [src/js/__tests__/ImmutableEvents.test.ts](./src/js/__tests__/ImmutableEvents.test.ts). The tests can be run using
 ```
@@ -70,3 +91,6 @@ This project comes with a hacky hardcoded implementation [keyStore-hardcoded.ts]
 
 ## Known Errors
 Ethers.js is not currently reading the ImmutableEvents event which contains the `struct`. Issue [109](https://github.com/ethers-io/ethers.js/issues/109) has been raised with the Ethers.js project.
+
+## TODO
+Using string to serialize data is not the most cost effective way of storing data in a Blockchain. Ideally there would be more compact data serialisation formats that will make it cheaper to make data immutable.
