@@ -43,7 +43,7 @@ function emitEvent(KeyValue[] keyValues) public returns (bool)
 ```
 
 ## Compiling Solidity
-The following command will iuse the `solc` compile that is installed via the npm dependencies
+The following command will use the `solc` compile that is installed via the npm dependencies
 ```
 npm run compileSol
 ```
