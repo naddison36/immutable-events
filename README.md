@@ -14,7 +14,7 @@ cd immutable-events
 npm install
 ```
 
-See [here](./scripts/README.md) for instructions on installing and configuring a development version Geth or Parity.
+You need to run an Ethereum blockchain to be able to test the smart contract. This can be done by running a development version of the Etyhereum Geth or Parity clients. See [here](./scripts/README.md) for instructions on installing and configuring either Geth or Parity for development and testing purposes.
 
 ## Smart Contract
 The Solidity code for the smart contract can be found in [contracts/ImmutableEvents.sol](./contracts/ImmutableEvents.sol).
@@ -23,6 +23,14 @@ The following lines ensure the latest Solidity compiler is used with the new exp
 ```
 pragma solidity ^0.4.19;
 pragma experimental ABIEncoderV2;
+```
+
+The struct for the key-value pair is just two properties of type string
+```
+struct KeyValue {
+        string key;
+        string value;
+    }
 ```
 
 The Solidity function that takes an array of key-value pairs and emits them in an event is
