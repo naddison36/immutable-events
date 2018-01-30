@@ -1,7 +1,7 @@
 # Immutable Events
 Smart contract to make key-value data immutable
 
-This is a project to demonstrate how data can be made immutable on an Ethereum blockchain. It uses a simple smart contract that simply takes key-value pairs of data and emits them in an event. This event is then stored in the Blockchain for as long as there are nodes running to maintain the state.
+This is a project to demonstrate how data can be made immutable on an Ethereum blockchain. It uses a simple, smart contract that takes key-value pairs of data and emits them in an event. This event is then stored in the Blockchain for as long as there are nodes running to maintain the state.
 
 This project also demonstrates using Solidity's new Application Binary Interface (ABI) that allows `struct` data types to be used in public or external functions and events.
 
@@ -25,7 +25,7 @@ pragma solidity ^0.4.19;
 pragma experimental ABIEncoderV2;
 ```
 
-The Solidity function that takes an array of key value pairs and emits them in an event is
+The Solidity function that takes an array of key-value pairs and emits them in an event is
 ```
 function emitEvent(KeyValue[] keyValues) public returns (bool)
     {
@@ -43,7 +43,7 @@ npm run compileSol
 ## Clients
 
 ### JavaScript
-A JavaScript client is available in the [src/js](./src/js) folder. It is actually written in TypeScript which transcompiles to JavaScript. It uses the [Ethers.js](https://docs.ethers.io/ethers.js/html/) library to connect to an Ethereum node, send signed Ethereum transactions and receive events.
+A JavaScript client is available in the [src/js](./src/js) folder. It is written in TypeScript which transcompiles to JavaScript. It uses the [Ethers.js](https://docs.ethers.io/ethers.js/html/) library to connect to an Ethereum node, send signed Ethereum transactions and receive events.
 
 The TypeScript class that interacts with the ImmutableEvent smart contract is [src/js/ImmutableEvents.ts](./src/js/ImmutableEvents.ts). Most of the Ethers.js code is abstracted away in [BaseContract.ts](./src/js/BaseContract.ts) which can be used to abstract any solidity contract.
 
@@ -63,7 +63,7 @@ export declare interface KeyStore {
 }
 ```
 
-This project comes with a hacky hardcoded implementation [keyStore-hardcoded.ts](./src/js/keyStore/keyStore-hardcoded.ts) and a slighty better, but not production usable, implementatino that uses environment variables [keyStore-env.ts](./src/js/keyStore/keyStore-env.ts). For production use, implementations that used a Hardware Security Module (HSM) or cloud key stores like the following would be used.
+This project comes with a hacky hardcoded implementation [keyStore-hardcoded.ts](./src/js/keyStore/keyStore-hardcoded.ts) and a slightly better, but not production usable, implementation that uses environment variables [keyStore-env.ts](./src/js/keyStore/keyStore-env.ts). For production use, implementations that used a Hardware Security Module (HSM) or cloud key stores like the following would be used.
 1. Azure Key Vault
 2. Google Cloud Key Management Service (KMS)
 3. AWS Key Management Service (KMS)
