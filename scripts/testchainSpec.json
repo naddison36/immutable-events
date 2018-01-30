@@ -1,0 +1,30 @@
+{
+    "name": "Testchain",
+    "engine": {
+		"instantSeal": null
+	},
+	"genesis": {	
+		"seal": {
+			"generic": "0x0"
+		},
+		"difficulty": "0x20000",
+		"gasLimit": "0x2fefd8"
+	},
+	"params": {
+			"networkID" : "0x64",
+			"maximumExtraDataSize": "0x20",
+			"minGasLimit": "0x1388",
+			"gasLimitBoundDivisor": "0x400",
+			"forkBlock": 1,
+			"eip140Transition": 1,
+			"eip211Transition": 1,
+			"eip214Transition": 1,
+			"eip658Transition": 1
+	},
+	"accounts": {
+		"0x19e7e376e7c213b7e7e7e46cc70a5dd086daff2a": { "balance": "10000000000000000000000000"},
+		"0x1563915e194d8cfba1943570603f7606a3115508": { "balance": "10000000000000000000000000"},
+		"0x5cbdd86a2fa8dc4bddd8a8f69dba48572eec07fb": { "balance": "10000000000000000000000000"},
+		"0x7564105e977516c53be337314c7e53838967bdac": { "balance": "10000000000000000000000000"}
+	}
+}

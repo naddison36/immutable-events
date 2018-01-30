@@ -1,0 +1,58 @@
+{
+  "name": "immutable-events",
+  "version": "0.0.1",
+  "description": "Smart contract to make key-value data immutable",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naddison36/immutable-events.git"
+  },
+  "bin": {
+    "bankToken": "./index.js"
+  },
+  "scripts": {
+    "buildSol": "solc --bin --abi -o ./bin/contracts --overwrite ./contracts/ImmutableEvents.sol",
+    "buildTS": "tsc",
+    "test": "jest"
+  },
+  "keywords": [
+    "Immutable",
+    "Ethereum",
+    "Events",
+    "Smart Contract"
+  ],
+  "author": "Nick Addison",
+  "license": "MIT",
+  "homepage": "https://github.com/naddison36/immutable-events#readme",
+  "dependencies": {
+    "bn.js": "^4.11.8",
+    "config": "^1.26.2",
+    "config-logger": "^0.0.4",
+    "ethers": "^2.2.4",
+    "js-yaml": "^3.9.1",
+    "verror": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^21.1.2",
+    "@types/node": "^6",
+    "jest": "^21.2.1",
+    "solc": "^0.4.19",
+    "ts-jest": "^21.1.1",
+    "typescript": "^2.6.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testEnvironment": "node"
+  }
+}
