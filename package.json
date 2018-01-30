@@ -13,6 +13,8 @@
   "scripts": {
     "buildSol": "solc --bin --abi -o ./bin/contracts --overwrite ./contracts/ImmutableEvents.sol",
     "buildTS": "tsc",
+    "startGeth": "cd scripts; ./startGeth.sh",
+    "startParity": "cd scripts; ./startParity.sh",
     "test": "jest"
   },
   "keywords": [

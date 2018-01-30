@@ -1,6 +1,5 @@
-
 /*
-A simple contract that makes key value data pairs immutable in the Ethereum blockchain
+A simple contract that makes key-value data pairs immutable in the Ethereum blockchain
 
 This software is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -24,17 +23,15 @@ contract ImmutableEvents
     }
 
     event ImmutableEvent(uint256 id, KeyValue[] keyValues);
-    
     // Is only used for testing
-    event SimpleEventX(uint256 id);
-
+    event SimpleEvent(uint256 id);
 
     function emitEvent(KeyValue[] keyValues) public returns (bool)
     {
         ImmutableEvent(id++, keyValues);
 
         // is only used for testing
-        SimpleEventX(id);
+        SimpleEvent(id);
 
         return true;
     }
