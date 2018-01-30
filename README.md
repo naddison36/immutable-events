@@ -82,7 +82,14 @@ The JavaScript client comes with Jest tests in [src/js/__tests__/ImmutableEvents
 npm test
 ```
 
-Make sure either Geth or Parity is running otherwise the tests with fail with `invalid json response`.
+Make sure either Geth or Parity is running otherwise the tests with fail with `invalid json response`. These can be run with either
+```
+npm run startGeth
+```
+or 
+```
+npm run startParity
+```
 
 #### Key Store
 When you instantiate the ImmutableEvent class you need to pass is a KeyStore which has the following interface defined in [src/js/keyStore/index.d.ts](./src/js/keyStore/index.d.ts)
