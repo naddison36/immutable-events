@@ -68,3 +68,5 @@ This project comes with a hacky hardcoded implementation [keyStore-hardcoded.ts]
 2. Google Cloud Key Management Service (KMS)
 3. AWS Key Management Service (KMS)
 
+## Known Errors
+Ethers.js is not currently reading the ImmutableEvents event which contains the `struct`. Issue [109](https://github.com/ethers-io/ethers.js/issues/109) has been raised with the Ethers.js project.
