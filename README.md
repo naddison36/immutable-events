@@ -14,7 +14,7 @@ cd immutable-events
 npm install
 ```
 
-You need to run an Ethereum blockchain to be able to test the smart contract. This can be done by running a development version of the Etyhereum Geth or Parity clients. See [here](./scripts/README.md) for instructions on installing and configuring either Geth or Parity for development and testing purposes.
+You need to run an Ethereum blockchain to be able to test the smart contract. This can be done by running a development version of the Ethereum Geth or Parity clients. See [here](./scripts/README.md) for instructions on installing and configuring either Geth or Parity for development and testing purposes.
 
 ## Smart Contract
 The Solidity code for the smart contract can be found in [contracts/ImmutableEvents.sol](./contracts/ImmutableEvents.sol).
@@ -109,3 +109,6 @@ Ethers.js is not currently reading the ImmutableEvents event which contains the 
 
 ## TODO
 Using string to serialize data is not the most cost effective way of storing data in a Blockchain. Ideally there would be more compact data serialisation formats that will make it cheaper to make data immutable.
+
+### Credits
+A huge thanks for Christian Reitwiessner (@chriseth) for implementing the new ABI encoder in Solidity and Richard Moore (@ricmoo) for the Ethers.js client library that was the first Ethereum client to support the new ABI encoder.
