@@ -36,7 +36,7 @@ describe("Immutable Events", ()=>
 
         test("Single key and value", async() =>
         {
-            expect.assertions(5);
+            expect.assertions(6);
 
             const txReceipt = await immutableEvents.emitEvent([{key: "testKey", value: "testValue"}]);
 
@@ -44,13 +44,12 @@ describe("Immutable Events", ()=>
 
             expect(await immutableEvents.getNextId()).toEqual(new BN(2));
 
-            const simpleEvents = await immutableEvents.getEvents("SimpleEvent");
-            expect(simpleEvents).toHaveLength(1);
-            expect(simpleEvents[0].id).toHaveLength(1);
-
-            // TODO get ImmutableEvent with an array of KeyValue structs working
             const events = await immutableEvents.getEvents("ImmutableEvent");
             expect(events).toHaveLength(1);
+
+            expect(events[0].id).toEqual(new BN(1));
+            expect(events[0].keyValues[0].key).toEqual("testKey");
+            expect(events[0].keyValues[0].value).toEqual("testValue");
 
         }, 30000);
 

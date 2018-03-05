@@ -23,15 +23,10 @@ contract ImmutableEvents
     }
 
     event ImmutableEvent(uint256 id, KeyValue[] keyValues);
-    // Is only used for testing
-    event SimpleEvent(uint256 id);
 
     function emitEvent(KeyValue[] keyValues) public returns (bool)
     {
         ImmutableEvent(id++, keyValues);
-
-        // is only used for testing
-        SimpleEvent(id);
 
         return true;
     }
