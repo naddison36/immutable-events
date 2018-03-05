@@ -105,7 +105,7 @@ This project comes with a hacky hardcoded implementation [keyStore-hardcoded.ts]
 3. AWS Key Management Service (KMS)
 
 ## Known Errors
-Ethers.js is not currently reading the ImmutableEvents event which contains the `struct`. Issue [109](https://github.com/ethers-io/ethers.js/issues/109) has been raised with the Ethers.js project.
+~~Ethers.js is not currently reading the ImmutableEvents event which contains the `struct`. Issue [109](https://github.com/ethers-io/ethers.js/issues/109) has been raised with the Ethers.js project.~~
 
 ## TODO
 Using string to serialize data is not the most cost effective way of storing data in a Blockchain. Ideally there would be more compact data serialisation formats that will make it cheaper to make data immutable.
